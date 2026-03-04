@@ -1,0 +1,247 @@
+:root {
+  --board-light: #f0d9b5;
+  --board-dark:  #b58863;
+  --amber:       #e6a800;
+  --amber-bg:    #fff3cd;
+  --navy:        #1a3a6e;
+  --dark-bg:     #1c2833;
+  --dark-banner: #1a3a6e;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0 12px 40px;
+  min-height: 100vh;
+  transition: background 0.4s, color 0.4s;
+}
+
+body.white-turn {
+  background: #fef9e7;
+  color: #333;
+}
+
+body.black-turn {
+  background: #1c2833;
+  color: #eee;
+}
+
+h1 {
+  margin: 20px 0 10px;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+/* ── Player banner ── */
+#player-banner {
+  font-size: 22px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 14px;
+  display: inline-block;
+  margin: 6px auto 4px;
+  min-width: 200px;
+  transition: background 0.4s, color 0.4s;
+}
+
+body.white-turn #player-banner {
+  background: #ffd700;
+  color: #333;
+}
+
+body.black-turn #player-banner {
+  background: #1a3a6e;
+  color: #eee;
+}
+
+/* ── Status ── */
+#status {
+  font-size: 16px;
+  margin: 4px 0 12px;
+  opacity: 0.75;
+}
+
+/* ── Board ── */
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 110px);
+  grid-template-rows: repeat(3, 110px);
+  gap: 0;
+  justify-content: center;
+  margin: 0 auto 16px;
+  border: 4px solid #555;
+  border-radius: 10px;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.cell {
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 68px;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  transition: filter 0.15s;
+}
+
+/* Checkerboard: cells at positions 0,2,4,6,8 (odd 1-index) are light */
+.cell:nth-child(odd) {
+  background: var(--board-light);
+}
+.cell:nth-child(even) {
+  background: var(--board-dark);
+}
+
+.cell:active {
+  filter: brightness(0.88);
+}
+
+/* Piece colour by player */
+.cell[data-player="white"] {
+  color: #1a3a6e;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+}
+
+.cell[data-player="black"] {
+  color: #111;
+  text-shadow: 0 0 5px #fff, 0 0 3px #fff;
+}
+
+.cell.highlight {
+  background: #6fcf6f !important;
+}
+
+.cell.selected {
+  background: #ffe066 !important;
+  outline: 3px solid var(--amber);
+  outline-offset: -3px;
+}
+
+/* ── Piece selector ── */
+#piece-selector {
+  min-height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0;
+}
+
+.piece-btn {
+  font-size: 52px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 14px;
+  border: 3px solid transparent;
+  background: rgba(128,128,128,0.15);
+  line-height: 1;
+  transition: background 0.2s, border-color 0.2s, transform 0.1s;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.piece-btn:active {
+  transform: scale(0.93);
+}
+
+.piece-btn.active {
+  background: #ffe066;
+  border-color: var(--amber);
+}
+
+/* ── Restart button ── */
+#restart {
+  font-size: 18px;
+  padding: 12px 32px;
+  border-radius: 14px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+  touch-action: manipulation;
+  transition: background 0.4s, color 0.4s;
+}
+
+body.white-turn #restart {
+  background: #ffd700;
+  color: #333;
+}
+
+body.black-turn #restart {
+  background: #1a3a6e;
+  color: #eee;
+}
+
+#restart:active {
+  filter: brightness(0.88);
+}
+
+/* ── Win overlay ── */
+#win-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 24px;
+}
+
+#win-overlay.hidden {
+  display: none;
+}
+
+#win-message {
+  font-size: 38px;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  line-height: 1.3;
+}
+
+#play-again {
+  font-size: 22px;
+  padding: 14px 36px;
+  cursor: pointer;
+  border-radius: 14px;
+  border: none;
+  background: #ffd700;
+  color: #333;
+  font-weight: bold;
+  touch-action: manipulation;
+}
+
+#play-again:active {
+  filter: brightness(0.88);
+}
+
+/* ── Mobile tweaks ── */
+@media (max-width: 400px) {
+  #board {
+    grid-template-columns: repeat(3, 95px);
+    grid-template-rows: repeat(3, 95px);
+  }
+
+  .cell {
+    width: 95px;
+    height: 95px;
+    font-size: 56px;
+  }
+
+  .piece-btn {
+    font-size: 44px;
+    padding: 6px 10px;
+  }
+}

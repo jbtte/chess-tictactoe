@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Chess Tictactoe</title>
+
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="white-turn">
+    <h1>Chess Tictactoe</h1>
+
+    <div id="player-banner"></div>
+
+    <div id="status"></div>
+
+    <div id="board"></div>
+
+    <div id="piece-selector"></div>
+
+    <button id="restart">Reiniciar</button>
+
+    <div id="win-overlay" class="hidden">
+      <div id="win-message"></div>
+      <button id="play-again">Jogar Novamente</button>
+    </div>
+
+    <script src="game.js"></script>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js');
+      }
+    </script>
+  </body>
+</html>
