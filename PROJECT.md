@@ -103,13 +103,25 @@ Includes:
 
 Allows installation on phones.
 
+## Game Modes
+
+Three modes selectable at the start and on every restart:
+
+**2 Jogadores** — local two-player, no changes to existing PvP rules.
+
+**vs Computador — Fácil** — AI plays black with random valid moves (placement and movement).
+
+**vs Computador — Difícil** — AI plays black using minimax with alpha-beta pruning (depth 6). Evaluates positions by counting piece threats per line and rewards or penalises based on player occupancy.
+
+Human always plays white. AI moves are delayed 450 ms to feel natural.
+
 ## File Tree
 
-index.html - Main UI layout. Contains board container and loads game.
+index.html - Main UI layout. Contains board container, mode overlay, and loads game.
 
-style.css - Visual design. Controls board grid and piece appearance.
+style.css - Visual design. Controls board grid, piece appearance, and mode overlay.
 
-game.js. - Core game logic. Contains: - board state; - movement rules; - victory detection; - turn system
+game.js - Core game logic. Contains: board state; movement rules; victory detection; turn system; easy and hard AI; minimax with alpha-beta.
 
 manifest.json - Defines PWA metadata.
 
@@ -117,9 +129,7 @@ service-worker.js - Provides offline support.
 
 README.md - User-facing documentation.
 
-PROJECT.md:
-
-Developer documentation.
+PROJECT.md - Developer documentation.
 
 ## Future Improvements
 
@@ -147,7 +157,9 @@ Queen.
 
 ### 4. AI opponent
 
-Simple minimax AI could allow solo play.
+~~Simple minimax AI could allow solo play.~~
+
+Implemented. Two difficulty levels: random (easy) and minimax with alpha-beta pruning (hard).
 
 ### 5. Animated movement
 

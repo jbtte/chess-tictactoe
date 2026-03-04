@@ -186,6 +186,49 @@ body.black-turn #restart {
   filter: brightness(0.88);
 }
 
+/* ── Mode overlay ── */
+#mode-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px;
+  z-index: 20;
+}
+
+#mode-overlay.hidden {
+  display: none;
+}
+
+#mode-overlay h2 {
+  font-size: 28px;
+  color: #ffd700;
+  margin: 0 0 8px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.mode-btn {
+  font-size: 19px;
+  padding: 14px 0;
+  cursor: pointer;
+  border-radius: 14px;
+  border: none;
+  background: #ffd700;
+  color: #333;
+  font-weight: bold;
+  touch-action: manipulation;
+  width: 280px;
+  transition: filter 0.15s;
+}
+
+.mode-btn:active {
+  filter: brightness(0.88);
+}
+
 /* ── Win overlay ── */
 #win-overlay {
   position: fixed;

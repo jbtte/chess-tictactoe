@@ -7,10 +7,21 @@
     <title>Chess Tictactoe</title>
 
     <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#333333" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body class="white-turn">
+    <div id="mode-overlay">
+      <h2>Escolha o modo</h2>
+      <button class="mode-btn" id="btn-pvp">2 Jogadores</button>
+      <button class="mode-btn" id="btn-easy">vs Computador — Fácil</button>
+      <button class="mode-btn" id="btn-hard">vs Computador — Difícil</button>
+    </div>
+
     <h1>Chess Tictactoe</h1>
 
     <div id="player-banner"></div>
