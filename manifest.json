@@ -1,7 +1,8 @@
 {
   "name": "Chess Tic Tac Toe",
   "short_name": "ChessTTT",
-  "start_url": "/",
+  "start_url": "/chess-tictactoe/",
+  "scope": "/chess-tictactoe/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#333333",
